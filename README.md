@@ -46,6 +46,40 @@ end
 function ADropSpeed()
 game:GetService("ReplicatedStorage").GTycoonClient.Remotes.BuySpeed:FireServer(1)
 end
+function Autoobby()
+local playerselect = game.Players.LocalPlayer.Character.HumanoidRootPart
+local obbycheckpoint = game:GetService("Workspace").ObbyCheckpoints
+local obbybutton = game:GetService("Workspace").ObbyButton2
+
+while wait(0.75) do
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint1, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint1, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint2, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint2, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint3, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint3, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint4, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint4, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint5, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint5, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint6, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint6, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint7, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint7, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint8, 0)
+            firetouchinterest(playerselect, obbycheckpoint.ObbyCheckpoint8, 1)
+            wait(0.5)
+            firetouchinterest(playerselect, obbybutton.Button, 0)
+            firetouchinterest(playerselect, obbybutton.Button, 1)
+end
+end
 
 
 b:Toggle("Auto Collect Drops",function(bool)
@@ -60,6 +94,9 @@ end)
 b:Toggle("Auto Buy 100 Slimes",function(bool)
     HundredSlime = bool
 end)
+b:Toggle("Auto Obby",function(bool)
+    Aobby = bool
+end)
 b:Toggle("Auto Merge",function(bool)
 	Merge = bool
 end)
@@ -73,6 +110,15 @@ coroutine.wrap(function()
         if DropFarm == true and task.wait(0.5) then
             pcall(function()
 				CollectDrops()
+            end)
+        end
+    end
+end)()
+coroutine.wrap(function()
+    while wait() do
+        if Aobby == true and task.wait(0.5) then
+            pcall(function()
+				Autoobby()
             end)
         end
     end
